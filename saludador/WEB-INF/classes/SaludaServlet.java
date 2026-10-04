@@ -10,9 +10,8 @@ public class SaludaServlet extends HttpServlet {
             throws IOException, ServletException {
         String nombre = req.getParameter("nombre");
         if (nombre == null) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            resp.setContentType("text/html; charset=UTF-8");
-            req.getRequestDispatcher("/saluda.html").include(req, resp);
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST,
+                    "Falta el parámetro nombre");
             return;
         }
 
