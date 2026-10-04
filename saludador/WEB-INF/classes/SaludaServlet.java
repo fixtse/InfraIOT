@@ -10,8 +10,8 @@ public class SaludaServlet extends HttpServlet {
             throws IOException, ServletException {
         String nombre = req.getParameter("nombre");
         if (nombre == null) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST,
-                    "Falta el parámetro nombre");
+            resp.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
+            resp.setHeader("Location", req.getContextPath() + "/saluda.html");
             return;
         }
 
