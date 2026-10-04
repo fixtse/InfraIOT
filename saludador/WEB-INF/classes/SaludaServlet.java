@@ -10,16 +10,17 @@ public class SaludaServlet extends HttpServlet {
             throws IOException, ServletException {
         String nombre = req.getParameter("nombre");
         if (nombre == null) {
-            req.getRequestDispatcher("/saluda.html").forward(req, resp);
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            resp.setContentType("text/html; charset=UTF-8");
+            req.getRequestDispatcher("/saluda.html").include(req, resp);
             return;
         }
 
+        resp.setStatus(HttpServletResponse.SC_OK);
         resp.setContentType("text/html; charset=UTF-8");
         PrintWriter out = resp.getWriter();
         out.println("<html><body>");
-        out.println("<h1>Hola, " + (nombre != null ? nombre : "anónimo")
-
-                + "!</h1>");
+        out.println("<h1>Hola, " + nombre + "!</h1>");
         out.println("</body></html>");
     }
 }
