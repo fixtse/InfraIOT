@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Tomcat: compile Java (bundled Eclipse compiler)",
+      "type": "process",
+      "command": "/usr/local/bin/tomcat-compile",
+      "args": [
+        "${workspaceFolder}"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Tomcat: restart",
+      "type": "process",
+      "command": "sudo",
+      "args": [
+        "systemctl",
+        "restart",
+        "tomcat"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "java.project.referencedLibraries": [
+    "/opt/tomcat/lib/*.jar",
+    "WEB-INF/lib/*.jar"
+  ],
+  "java.project.sourcePaths": [
+    "WEB-INF/classes"
+  ],
+  "java.project.outputPath": ".vscode/java-bin"
+}

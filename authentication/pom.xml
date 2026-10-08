@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>local.authentication</groupId>
+    <artifactId>authentication</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <tomcat.home>/opt/tomcat</tomcat.home>
+        <tomcat.version>10.1.60</tomcat.version>
+    </properties>
+
+    <!-- Use the same installed libraries as tomcat-compile. Tomcat supplies
+         these at runtime; system dependencies are not bundled in the WAR. -->
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>system</scope>
+            <systemPath>${tomcat.home}/lib/servlet-api.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>system</scope>
+            <systemPath>${tomcat.home}/lib/catalina.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>WEB-INF/classes</sourceDirectory>
+        <finalName>authentication</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <warSourceDirectory>${project.basedir}</warSourceDirectory>
+                    <warSourceExcludes>pom.xml,.vscode/**,.git/**,scripts/**,target/**,WEB-INF/classes/**,**/*.java</warSourceExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
