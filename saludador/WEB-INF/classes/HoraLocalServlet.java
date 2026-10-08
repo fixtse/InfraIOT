@@ -1,7 +1,11 @@
 
-import jakarta.servlet.http.*;
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalTime;
+
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class HoraLocalServlet extends HttpServlet {
 
