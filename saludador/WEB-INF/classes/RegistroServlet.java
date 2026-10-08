@@ -1,3 +1,4 @@
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -7,6 +8,7 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 
 public class RegistroServlet extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws IOException, ServletException {
