@@ -49,7 +49,7 @@
                 <version>3.4.0</version>
                 <configuration>
                     <warSourceDirectory>${project.basedir}</warSourceDirectory>
-                    <warSourceExcludes>pom.xml,.vscode/**,.git/**,target/**,WEB-INF/classes/**,**/*.java</warSourceExcludes>
+                    <warSourceExcludes>pom.xml,.vscode/**,.git/**,scripts/**,target/**,WEB-INF/classes/**,**/*.java</warSourceExcludes>
                 </configuration>
             </plugin>
         </plugins>
