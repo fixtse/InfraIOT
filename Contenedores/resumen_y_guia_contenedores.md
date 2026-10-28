@@ -1,6 +1,7 @@
-**Resumen: contenedores de aplicaciones**  
-El documento presenta varias formas de distribuir y aislar aplicaciones en Linux. La idea central es distinguir **empaquetar una aplicación** de **aislarla**: AppImage facilita la distribución, mientras que Firejail, Flatpak y Docker añaden mecanismos de sandboxing.  
-**Conceptos clave**  
+# Resumen: contenedores de aplicaciones
+Se presentan varias formas de distribuir y aislar aplicaciones en Linux. La idea central es distinguir **empaquetar una aplicación** de **aislarla**: AppImage facilita la distribución, mientras que Firejail, Flatpak y Docker añaden mecanismos de sandboxing.  
+
+## Conceptos clave 
 - **Sandboxing:** ejecutar una aplicación con acceso restringido al sistema.  
 - **Máquina virtual:** aísla un sistema operativo completo.  
 - **Namespaces:** limitan qué recursos ve un proceso.  
@@ -17,7 +18,7 @@ El documento presenta varias formas de distribuir y aislar aplicaciones en Linux
 | Docker |  Ejecutar aplicaciones en contenedores |  Combina namespaces, cgroups, capabilities y seccomp |  
   
    
-**AppImage: empaquetar para distribuir**  
+### AppImage: empaquetar para distribuir
 Una **AppImage** es un archivo ejecutable que contiene una aplicación y sus dependencias. Se construye a partir de un directorio **AppDir**.  
 - **AppRun** inicia la aplicación y puede preparar variables como `PATH` y `LD_LIBRARY_PATH`.  
 - El archivo **`.desktop`** describe la aplicación, su nombre, icono y cómo lanzarla.  
@@ -32,7 +33,7 @@ Firejail permite limitar el acceso de una aplicación a archivos, red y otros re
 - `--private=DIR`: usa un directorio como HOME privado del sandbox.  
 - `--net=none`: desactiva el acceso a la red.  
 La prueba con `prueba.txt` permite observar qué archivos puede ver la aplicación y dónde guarda los nuevos.  
-**Flatpak: distribuir y ejecutar en un sandbox**  
+### Flatpak: distribuir y ejecutar en un sandbox
 Flatpak distribuye aplicaciones, runtimes y SDKs mediante repositorios llamados **remotes**. Flathub es un repositorio habitual.  
 - El **runtime** aporta las bibliotecas necesarias para ejecutar la aplicación.  
 - El **SDK** añade compiladores, cabeceras y herramientas de desarrollo.  
@@ -63,29 +64,37 @@ Comandos que aparecen en las prácticas:
 - `on-failure[:n]`: reinicia si termina con error; `n` limita los intentos.  
 - `unless-stopped`: reinicia automáticamente salvo que se haya detenido manualmente.  
 - `always`: reinicia automáticamente, incluso cuando se reinicia el daemon.  
-**Para estudiar:**  
+## Para estudiar:
+
 1. **¿Cuál es la diferencia entre AppImage y Docker?**  
    
  AppImage empaqueta una aplicación para distribuirla; Docker ejecuta una instancia aislada desde una imagen. AppImage no proporciona sandboxing por sí misma.  
+
 2. **¿Qué diferencia hay entre una imagen y un contenedor?**  
    
  La imagen es la plantilla; el contenedor es una instancia en ejecución o detenida creada a partir de ella.  
+
 3. **¿Qué hace cada mecanismo del kernel?**  
    
  Namespaces aíslan lo visible; cgroups limitan recursos; capabilities separan privilegios; seccomp filtra llamadas al sistema.  
+
 4. **¿Qué aportan runtime y SDK en Flatpak?**  
    
  El runtime sirve para ejecutar; el SDK añade herramientas de desarrollo.  
+
 5. **¿Qué comprueban `ldd` y `readelf -d` en el laboratorio AppImage?**  
    
  `ldd` muestra qué bibliotecas se cargan; `readelf -d` permite inspeccionar atributos ELF relacionados con la búsqueda de bibliotecas, como RPATH o RUNPATH.  
+
 6. **¿Qué diferencia hay entre `docker stop` y `docker kill`?**  
    
  `stop` intenta terminar el proceso de forma ordenada y, tras esperar, puede forzarlo. `kill` envía SIGKILL directamente. Ambos detienen el contenedor, pero no lo eliminan.  
+
 7. **¿Cómo se accede a una aplicación en un contenedor desde el exterior?**  
    
  Mediante un mapeo de puertos entre el contenedor y el host.  
-**Repaso activo**  
+
+### **Repaso activo**  
 Intenta responder sin mirar el resumen:  
 - Nombra los cuatro mecanismos de aislamiento del kernel y explica uno con un ejemplo.  
 - Describe el flujo para convertir un AppDir en una AppImage.  
