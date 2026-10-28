@@ -41,7 +41,7 @@ Flatpak distribuye aplicaciones, runtimes y SDKs mediante repositorios llamados 
 - Los identificadores suelen usar dominios invertidos, por ejemplo `org.gnome.clocks`.  
 - Un **manifest** describe cómo construir y ejecutar una aplicación.  
 El laboratorio instala GNOME Clocks, consulta sus metadatos y permisos, y compara los archivos visibles en el host con los directorios que ve desde su sandbox.  
-**Docker: imágenes, contenedores y arquitectura**  
+### Docker: imágenes, contenedores y arquitectura 
 Una **imagen** contiene el sistema de archivos y la configuración necesarios para ejecutar una aplicación. Un **contenedor** es una instancia creada a partir de una imagen; una misma imagen puede crear varios contenedores.  
 Docker tiene arquitectura cliente-servidor:  
 - El cliente `docker` envía órdenes.  
